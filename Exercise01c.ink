@@ -29,6 +29,7 @@ VAR tranquility =0
 You stand at the waters edge, gazing into the near infinite sea. You hear what sounds like a sweet melody, calling to you from the stars reflecting in the water. Behind you lies a dark cave, cold and unfeeling.
 {tranquility == 0: You don't yet feel at peace} 
 {tranquility > 0: You're a little at peace, maybe you need more tranquility}
+Your tranquility is at {tranquility}
 
 *[Listen to the song.] 
      ~tranquility = tranquility +1
@@ -51,7 +52,7 @@ The cave you now stand in is dark, cold, and unfeeling. You feel as though just 
 *[Turn back.] ->beach_shore
 
 ==deep_cave==
-You feel the rush of wind against your face. You stand at the edge of a cliff, staring into the great beyond. You're back home. It almost feels as though you never left. {tranquility == 1: Though something is missing, you can't quite figure out what.} Your father calls for you, worried since you went missing.
+{tranquility > 1: You begin heading home.} You feel the rush of wind against your face. You stand at the edge of a cliff, staring into the great beyond. You're back home. It almost feels as though you never left. {tranquility == 1: Though something is missing, you can't quite figure out what.} Your father calls for you, worried since you went missing.
 "Welcome back," he says with a smile. {tranquility ==0:"Tell me, did you find what you were looking for?"}
 {tranquility == 1: You made it home, you feel happy, a smile still planted on your face. {listen_beach:The song still radiating in your soul. Making the whole world seem brighter.} } 
 {tranquility == 2: "Welcome home," your father says, a smile on his face. "You look happy today! Let's head home, your mother is worried. You can tell us about your adventure when we get back."} 
