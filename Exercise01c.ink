@@ -14,7 +14,9 @@ This exercise will demonstrate the following in the example video:
  - Print at least one of the variables to the player in a passage
  - Check the value of a variable and have it do something
  
- Editor's Note: Since I already went over the required number of knots on the last exercise, I added 2 new ones in here. I also added varrying dialouge based on the player's tranquility level. Only a line or two, but enough for some individuality.
+ 
+ 
+ Editor's Note for Ocean's Song v2: Prior to this exercise I believe I had 10 knots, now I have 14 knots. I also added a bunch of slightly varying dialouge based on the player's tranquolity level or where they first came from. It's not a lot, but I feel like it makes the experience flow a little nicer. Again, good wriitng is my personal goal. So if the story is intriguing and or though provoking, I consider this a success.
  
 */
 
@@ -47,8 +49,9 @@ Your tranquility is now at {tranquility}
 *{seashell < 1}[Pick up a seashell.] ->seashell_pickup 
 
 ==dark_cave==
-The cave you now stand in is dark, cold, and unfeeling. You feel as though just standing here is enough to make your skin crawl. You can hear your heatbeat, pulsating through your chest. Fear. Yet, perhaps this is your only option to make a choice that is your own.
-*[Head deeper.] ->deep_cave
+{darkest_cave: You escaped, yet you are right back where you started.}The cave you now stand in is dark, cold, and unfeeling. A single point of light exists at the end of the tunnel. You feel as though just standing here is enough to make your skin crawl. You can hear your heatbeat, pulsating through your chest. Fear. Yet, perhaps this is your only option to make a choice that is your own.
+*[Head deeper into the darkness.] ->darkest_cave
+*[Head to the light] -> deep_cave
 *[Turn back.] ->beach_shore
 
 ==deep_cave==
@@ -56,6 +59,7 @@ The cave you now stand in is dark, cold, and unfeeling. You feel as though just 
 "Welcome back," he says with a smile. {tranquility ==0:"Tell me, did you find what you were looking for?"}
 {tranquility == 1: You made it home, you feel happy, a smile still planted on your face. {listen_beach:The song still radiating in your soul. Making the whole world seem brighter.} } 
 {tranquility == 2: "Welcome home," your father says, a smile on his face. "You look happy today! Let's head home, your mother is worried. You can tell us about your adventure when we get back."} 
+{tranquility > 3: You feel almost scared. The pull of the ocean almost took you away. Perhaps you should never return.}
 
 You have {seashell} seashells
 
@@ -63,6 +67,16 @@ You have {seashell} seashells
 *{seashell > 0} [Give the seashell as a present for your mother.]->seashell_gift
 *[Go home] ->END
 
+==darkest_cave==
+You now stand in almost complete darkness. Slight fear and panic begin to settle in. You are trapped. The silence stabbing into your ears and the century old air burns your lungs.
+*{tranquility >= 2}[Try to escape] ->dark_cave
+*{tranquility < 2} [Try to escape] -> cave_abyss
+*[Accept, go deeper] -> cave_abyss
+
+==cave_abyss==
+You have utterly lost yourself in a dark void. One without ligth and without hope. You can't even hear the allure of the Ocean's Song anymore. You have totally vanished from this world. No desire...and no sense of self.
+{tranquility > 2: Perhaps this was the answer you searched for. To completly dissapear from this world.}
+->END
 
 ==listen_beach==
 You stand there, listening to the song. It makes you feel...at peace. That your worries can finally dissapear. The answers to that question burning deep within your heart, may finally be understood. All you must do, is head forward and never look back. {not seashell_pickup: Though the beautiful shell on the ground may make you feel better.}
@@ -92,6 +106,7 @@ You ran, trying to break free from the calling sea. You're out of breath, gaspin
 you have {seashell} seashells
 
 *[Head home.] ->deep_cave
+*[Go deeper into the darkness.] -> darkest_cave
 *[Go back to the water.] ->beach_shore
 
 ==wade_waters==
