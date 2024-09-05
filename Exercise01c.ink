@@ -74,8 +74,8 @@ You now stand in almost complete darkness. Slight fear and panic begin to settle
 *[Accept, go deeper] -> cave_abyss
 
 ==cave_abyss==
-You have utterly lost yourself in a dark void. One without ligth and without hope. You can't even hear the allure of the Ocean's Song anymore. You have totally vanished from this world. No desire...and no sense of self.
-{tranquility > 2: Perhaps this was the answer you searched for. To completly dissapear from this world.}
+You have utterly lost yourself in a dark void. One without light and without hope. You can't even hear the allure of the Ocean's Song anymore. You have totally vanished from this world. No desire...and no sense of self.
+{tranquility >= 2: Perhaps this was the answer you searched for. To completly dissapear from this world.}
 ->END
 
 ==listen_beach==
@@ -96,7 +96,6 @@ You now have a seashell, perhaps your mother would like it.
 
 you have {seashell} seashell
 
-*[Listen to the song] -> listen_beach
 *[Gaze back out to the sea] -> beach_shore
 
 ==sprint_cave==
